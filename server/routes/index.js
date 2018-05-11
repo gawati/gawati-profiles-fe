@@ -49,19 +49,19 @@ router.post('/profile', upload.any(),
   userController.saveProfile,
 );
 
-router.get('/organization',
+router.get('/list/organization',
   organizationController.listOrganization,
 );
-router.get('/organization/:_id',
+router.get('/get/organization',
   organizationController.getOrganization,
 );
-router.post('/organization',
+router.post('/save/organization',
   organizationController.saveOrganization,
 );
-router.put('/organization/:_id',
+router.put('/update/organization',
   organizationController.updateOrganization,
 );
-router.delete('/organization/:_id',
+router.delete('/delete/organization',
   organizationController.deleteOrganization,
 );
 

@@ -21,7 +21,7 @@ exports.listOrganization = async(req, res) => {
 
 exports.getOrganization = async(req, res) => {
     try{
-      const organization = await Organization.findOne({_id: req.params._id});
+      const organization = await Organization.findOne({_id: req.query._id});
       if(organization){
         res.json({ "success": "true", "data": organization});
       }else{
@@ -35,7 +35,7 @@ exports.getOrganization = async(req, res) => {
 
 exports.deleteOrganization = async(req, res) => {
     try{
-      const organization = await Organization.remove({_id: req.params._id});
+      const organization = await Organization.remove({_id: req.body._id});
       if(organization){
         res.json({ "success": "true", "data": organization});
       }else{
@@ -63,7 +63,12 @@ exports.updateOrganization = async(req, res) => {
   try{
     const data = req.body || {}
     const organization = await Organization.findOne({ _id: req.body._id });
-    organization = req.body;
+    organization.country = req.body.country;
+    organization.date = req.body.date;
+    organization.language = req.body.language;
+    organization.name = req.body.name;
+    organization.realm = req.body.realm;
+    organization.type = req.body.type;
     await organization.save();
     res.json({ "success": "true", "data": organization});
   }catch (err) {
