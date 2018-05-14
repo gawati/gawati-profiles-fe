@@ -13,6 +13,9 @@ const userSchema = new mongoose.Schema({
   },
   dpUrl: String,
   nickName: String,
+  phone: String,
+  country: String,
+  language: String,
 });
 
 

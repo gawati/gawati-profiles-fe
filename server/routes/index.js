@@ -39,6 +39,7 @@ var upload = multer({ storage: storage })
 
 
 const userController = require('../controllers/userController');
+const organizationController = require('../controllers/organizationController');
 
 router.get('/profile',
   userController.getProfile,
@@ -48,6 +49,21 @@ router.post('/profile', upload.any(),
   userController.saveProfile,
 );
 
+router.get('/list/organization',
+  organizationController.listOrganization,
+);
+router.get('/get/organization',
+  organizationController.getOrganization,
+);
+router.post('/save/organization',
+  organizationController.saveOrganization,
+);
+router.put('/update/organization',
+  organizationController.updateOrganization,
+);
+router.delete('/delete/organization',
+  organizationController.deleteOrganization,
+);
 
 
 module.exports = router;

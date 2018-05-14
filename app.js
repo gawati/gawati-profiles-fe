@@ -35,6 +35,7 @@ db.once('open', function() {
 });
 
 require('./server/models/User');
+require('./server/models/Organization');
 
 var app = express();
 
