@@ -1,7 +1,8 @@
 {
-  "name": "gawati-user-profiles",
+  "name": "gawati-profiles-fe",
   "version": "1.0.0",
   "scripts": {
+    "start": "node ./bin/www",
     "webpack": "webpack",
     "watch": "NODE_ENV=development nodemon server.js --ignore client/ --ignore node_modules/",
     "build": "mkdir build && cp -arv variables.env *.json *.js profiles server node_modules LICENSE build/",
