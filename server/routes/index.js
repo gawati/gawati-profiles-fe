@@ -40,6 +40,7 @@ var upload = multer({ storage: storage })
 
 const userController = require('../controllers/userController');
 const organizationController = require('../controllers/organizationController');
+const searchController = require('../controllers/searchController');
 
 router.get('/profile',
   userController.getProfile,
@@ -63,6 +64,13 @@ router.put('/update/organization',
 );
 router.delete('/delete/organization',
   organizationController.deleteOrganization,
+);
+
+router.get('/search/search',
+  searchController.listSearch,
+);
+router.post('/save/search',
+  searchController.saveSearch,
 );
 
 
