@@ -7,7 +7,7 @@ const winston = require('winston');
 
 exports.listSearch = async(req, res) => {
     try{
-      const search = await Search.find({ userName: req.query.userName, searchName: {$regex: ".*" + req.query.searchName + ".*"}});
+      const search = await Search.find({ userName: req.query.userName, searchName: {$regex: ".*" + req.query.searchName + ".*", $options : "i"}});
       if(search){
         res.json({ "success": "true", "data": search});
       }else{
@@ -29,4 +29,18 @@ exports.saveSearch = async(req, res) => {
     winston.log("error", "saveSearch", err);
     res.json({"error": "saveSearch", "data": serializeError(err)});
   }
+}
+
+exports.latestSearch = async(req, res) => {
+    try{
+      const search = await Search.find({ userName: req.query.userName}).sort({$natural:-1}).limit(5);
+      if(search){
+        res.json({ "success": "true", "data": search});
+      }else{
+        res.json({ "success": "true", "data": []});
+      }
+    }catch(err){
+        winston.log("error", "getSearch");
+        res.json({"error": "getSearch", "data": serializeError(err)});
+    }
 }

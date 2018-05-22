@@ -72,6 +72,9 @@ router.get('/search/search',
 router.post('/save/search',
   searchController.saveSearch,
 );
+router.get('/latest/search',
+  searchController.latestSearch,
+);
 
 
 module.exports = router;

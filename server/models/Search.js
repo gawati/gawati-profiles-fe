@@ -10,6 +10,7 @@ const searchSchema = new mongoose.Schema({
   userName: String,
   searchName: String,
   data: String,
+  time : { type : Date, default: Date.now },
 });
 
 
