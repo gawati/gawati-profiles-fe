@@ -31,11 +31,12 @@ db.on('error', function() {
 });
 
 db.once('open', function() {
-  winston.log("info", `connected to database::${process.env.DATABASE}`);
+	winston.log("info", `connected to database::${process.env.DATABASE}`);
 });
 
 require('./server/models/User');
 require('./server/models/Organization');
+require('./server/models/Search');
 
 var app = express();
 
