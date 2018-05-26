@@ -4,8 +4,21 @@ const promisify = require('es6-promisify');
 const serializeError = require('serialize-error');
 const winston = require('winston');
 
-
 exports.listSearch = async(req, res) => {
+    try{
+      const search = await Search.find({userName: req.query.userName});
+      if(search){
+        res.json({ "success": "true", "data": search});
+      }else{
+        res.json({ "success": "true", "data": []});
+      }
+    }catch(err){
+        winston.log("error", "getSearch");
+        res.json({"error": "getSearch", "data": serializeError(err)});
+    }
+}
+
+exports.searchSearch = async(req, res) => {
     try{
       const search = await Search.find({ userName: req.query.userName, searchName: {$regex: ".*" + req.query.searchName + ".*", $options : "i"}});
       if(search){
