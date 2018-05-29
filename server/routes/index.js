@@ -78,6 +78,12 @@ router.get('/latest/search',
 router.get('/list/search',
   searchController.listSearch,
 );
+router.put('/update/search',
+  searchController.updateSearch,
+);
+router.delete('/delete/search',
+  searchController.deleteSearch,
+);
 
 
 module.exports = router;
