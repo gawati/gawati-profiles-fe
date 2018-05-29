@@ -67,13 +67,22 @@ router.delete('/delete/organization',
 );
 
 router.get('/search/search',
-  searchController.listSearch,
+  searchController.searchSearch,
 );
 router.post('/save/search',
   searchController.saveSearch,
 );
 router.get('/latest/search',
   searchController.latestSearch,
+);
+router.get('/list/search',
+  searchController.listSearch,
+);
+router.put('/update/search',
+  searchController.updateSearch,
+);
+router.delete('/delete/search',
+  searchController.deleteSearch,
 );
 
 
